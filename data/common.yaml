@@ -1,0 +1,20 @@
+corp104_samba::server::package_ensure: 'installed'
+corp104_samba::server::package_name: 'samba'
+corp104_samba::server::service_ensure: 'running'
+corp104_samba::server::service_enable: true
+corp104_samba::server::service_name: 'smbd'
+corp104_samba::server::smb_config: '/etc/samba/smb.conf'
+
+
+corp104_samba::tmp_dir: '/tmp'
+corp104_samba::tmp_samba_dir: "_samba"
+corp104_samba::save_day: 7
+corp104_samba::server: ~
+corp104_samba::server_target: ~
+corp104_samba::local_target: ~
+corp104_samba::auth_user: ~
+corp104_samba::auth_pass: ~
+corp104_samba::http_proxy: ~
+corp104_samba::slack: ~
+corp104_samba::cron_hour: '0'
+corp104_samba::cron_minute: '30'
