@@ -5,7 +5,6 @@ class corp104_samba::server (
   Boolean $service_enable,
   String $service_name,
   String $smb_config,
-
 ){
 
   package { 'corp104_samba':
