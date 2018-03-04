@@ -7,7 +7,7 @@ class corp104_samba::config inherits corp104_samba {
   }
 
   concat { $corp104_samba::smb_config:
-    ensure => present,
+    ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
