@@ -1,9 +1,9 @@
 require 'spec_helper_acceptance'
 
-describe 'install corp104_backup' do
+describe 'install corp104_samba' do
   context 'default parameters' do
     it 'should install package' do
-      pp = "class { 'corp104_backup': }"
+      pp = "class { 'corp104_samba': }"
 
       # Run it twice and test for idempotency
       apply_manifest(pp, :catch_failures => true)
@@ -11,19 +11,21 @@ describe 'install corp104_backup' do
     end
   end
 
-  context 'generate backup script' do
+  context 'generate samba share' do
     it 'should install package' do
       pp = <<-EOS
-        package { 'cron':
-          ensure => present,
-        }
-        class { 'corp104_backup':
-          server        => '10.1.10.200',
-          server_target => '/backup',
-          local_target  => '/backup',
-        } 
-        corp104_backup::cifs { 'default':
-          backup_list => [ '/tmp', '/var/tmp' ],
+        include corp104_samba
+
+        corp104_samba::share { 'share-sample':
+          comment        => 'This share sample',
+          path           => '/tmp',
+          writable       => true,
+          browseable     => true,
+          create_mask    => '0644',
+          directory_mask => '0755',
+          valid_users    => 'smbuser',
+          hosts_deny     => ['All'],
+          hosts_allow    => ['192.168.0.2'],
         }
       EOS
 
