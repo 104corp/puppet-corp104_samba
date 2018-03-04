@@ -32,11 +32,19 @@ All parameters for the ntp module are contained within the main `::corp104_samba
 include '::corp104_samba'
 ```
 
-### Generate samba script
+### Generate samba share
 
 ```puppet
-corp104_samba::cifs { 'default':
-  samba_list => [ '/tmp', '/var/tmp' ],
+corp104_samba::share { 'share-sample':
+  comment        => 'This share sample',
+  path           => '/tmp',
+  writable       => true,
+  browseable     => true,
+  create_mask    => '0644',
+  directory_mask => '0755',
+  valid_users    => 'smbuser',
+  hosts_deny     => ['All'],
+  hosts_allow    => ['192.168.0.2'],
 }
 ```
 
@@ -51,7 +59,10 @@ corp104_samba::cifs { 'default':
 #### Private classes
 
 * corp104_samba Handles global config.
-
+* corp104_samba::install Handles the install.
+* corp104_samba::config Handles the config.
+* corp104_samba::service Handles the service.
+* corp104_samba::share Handles the share config.
 
 ## Limitations
 
