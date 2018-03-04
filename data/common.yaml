@@ -1,41 +1,41 @@
-corp104_samba::server::package_ensure: 'installed'
-corp104_samba::server::package_name: 'samba'
-corp104_samba::server::service_ensure: 'running'
-corp104_samba::server::service_enable: true
-corp104_samba::server::service_name: 'smbd'
-corp104_samba::server::smb_config: '/etc/samba/smb.conf'
-corp104_samba::server::nmbd_enable: false
-corp104_samba::server::workgroup: 'WORKGROUP'
-corp104_samba::server::server_string: 'This is Samba server manage by puppet.'
-corp104_samba::server::dns_proxy: false
-corp104_samba::server::wins_support: false
-corp104_samba::server::wins_server: ~
-corp104_samba::server::interface: ~
-corp104_samba::server::bind_interfaces_only: false
-corp104_samba::server::log_file: '/var/log/samba/log.%m'
-corp104_samba::server::max_log_size: 1000
-corp104_samba::server::syslog_only: false
-corp104_samba::server::syslog: '0'
-corp104_samba::server::panic_action: '/usr/share/samba/panic-action %d'
-corp104_samba::server::server_role: 'standalone server'
-corp104_samba::server::passdb_backend: 'tdbsam'
-corp104_samba::server::obey_pam_restrictions: true
-corp104_samba::server::unix_password_sync: true
-corp104_samba::server::passwd_program: '/usr/bin/passwd %u'
-corp104_samba::server::passwd_chat: '*Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .'
-corp104_samba::server::pam_password_change: true
-corp104_samba::server::map_to_guest: 'bad user'
-corp104_samba::server::logon_path: ~
-corp104_samba::server::logon_drive: ~
-corp104_samba::server::logon_home: ~
-corp104_samba::server::logon_script: ~
-corp104_samba::server::add_user_script: ~
-corp104_samba::server::add_machine_script: ~
-corp104_samba::server::add_group_script: ~
-corp104_samba::server::add_user_script: ~
-corp104_samba::server::include: ~
-corp104_samba::server::idmap_uid: ~
-corp104_samba::server::idmap_gid: ~
-corp104_samba::server::template_shell: ~
-corp104_samba::server::usershare_max_shares: ~
-corp104_samba::server::usershare_allow_guests: true
+corp104_samba::package_ensure: 'installed'
+corp104_samba::package_name: 'samba'
+corp104_samba::service_ensure: 'running'
+corp104_samba::service_enable: true
+corp104_samba::service_name: 'smbd'
+corp104_samba::smb_config: '/etc/samba/smb.conf'
+corp104_samba::nmbd_enable: false
+corp104_samba::workgroup: 'WORKGROUP'
+corp104_samba::server_string: 'This is Samba server manage by puppet.'
+corp104_samba::dns_proxy: false
+corp104_samba::wins_support: false
+corp104_samba::wins_server: ~
+corp104_samba::interface: ~
+corp104_samba::bind_interfaces_only: false
+corp104_samba::log_file: '/var/log/samba/log.%m'
+corp104_samba::max_log_size: 1000
+corp104_samba::syslog_only: false
+corp104_samba::syslog: '0'
+corp104_samba::panic_action: '/usr/share/samba/panic-action %d'
+corp104_samba::server_role: 'standalone server'
+corp104_samba::passdb_backend: 'tdbsam'
+corp104_samba::obey_pam_restrictions: true
+corp104_samba::unix_password_sync: true
+corp104_samba::passwd_program: '/usr/bin/passwd %u'
+corp104_samba::passwd_chat: '*Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .'
+corp104_samba::pam_password_change: true
+corp104_samba::map_to_guest: 'bad user'
+corp104_samba::logon_path: ~
+corp104_samba::logon_drive: ~
+corp104_samba::logon_home: ~
+corp104_samba::logon_script: ~
+corp104_samba::add_user_script: ~
+corp104_samba::add_machine_script: ~
+corp104_samba::add_group_script: ~
+corp104_samba::add_user_script: ~
+corp104_samba::include: ~
+corp104_samba::idmap_uid: ~
+corp104_samba::idmap_gid: ~
+corp104_samba::template_shell: ~
+corp104_samba::usershare_max_shares: ~
+corp104_samba::usershare_allow_guests: true

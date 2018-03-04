@@ -1,4 +1,4 @@
-class corp104_samba::server (
+class corp104_samba (
   String $package_ensure,
   String $package_name,
   String $service_ensure,
@@ -40,11 +40,11 @@ class corp104_samba::server (
   Optional[Integer] $usershare_max_shares,
   Boolean $usershare_allow_guests,
 ){
-  contain corp104_samba::server::install
-  contain corp104_samba::server::config
-  contain corp104_samba::server::service
+  contain corp104_samba::install
+  contain corp104_samba::config
+  contain corp104_samba::service
 
-  Class['::corp104_samba::server::install']
-  -> Class['::corp104_samba::server::config']
-  ~> Class['::corp104_samba::server::service']
+  Class['::corp104_samba::install']
+  -> Class['::corp104_samba::config']
+  ~> Class['::corp104_samba::service']
 }
