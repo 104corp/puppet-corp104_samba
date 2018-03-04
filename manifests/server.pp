@@ -5,25 +5,13 @@ class corp104_samba::server (
   Boolean $service_enable,
   String $service_name,
   String $smb_config,
+  Boolean $nmbd_enable,
 ){
+  contain corp104_samba::install
+  contain corp104_samba::config
+  contain corp104_samba::service
 
-  package { 'corp104_samba':
-    ensure    => $package_ensure,
-    name      => $package_name,
-  }
-
-  service { 'corp104_samba':
-    ensure    => $service_ensure,
-    enable    => $service_enable,
-    name      => $service_name,
-    subscribe => Package['corp104_samba'],
-  }
-
-  
-  augeas { 'smb.conf':
-    incl => $smb_config,
-    lens => 'Samba.lns',
-    notify  => Service['']
-  }
-
+  Class['::corp104_samba::install']
+  -> Class['::corp104_samba::config']
+  ~> Class['::corp104_samba::service']
 }
