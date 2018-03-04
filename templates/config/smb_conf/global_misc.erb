@@ -1,0 +1,47 @@
+
+############ Misc ############
+
+# Using the following line enables you to customise your configuration
+# on a per machine basis. The %m gets replaced with the netbios name
+# of the machine that is connecting
+<% if @include -%>
+  include = <%= @include %>
+<% else -%>
+#  include = /home/samba/etc/smb.conf.%m
+<% end -%>
+
+# Some defaults for winbind (make sure you're not using the ranges
+# for something else.)
+<% if @idmap_uid -%>
+  idmap uid = <%= @idmap_uid %>
+<% else -%>
+#  idmap uid = 10000-20000
+<% end -%>
+<% if @idmap_gid -%>
+  idmap gid = <%= @idmap_gid %>
+<% else -%>
+#  idmap gid = 10000-20000
+<% end -%>
+<% if @template_shell -%>
+  template shell = <%= @template_shell %>
+<% else -%>
+#  template shell = /bin/bash
+<% end -%>
+
+# Setup usershare options to enable non-root users to share folders
+# with the net usershare command.
+
+# Maximum number of usershare. 0 (default) means that usershare is disabled.
+<% if @usershare_max_shares -%>
+  usershare max shares = <%= @usershare_max_shares %>
+<% else -%>
+#  usershare max shares = 100
+<% end -%>
+
+# Allow users who've been granted usershare privileges to create
+# public shares, not just authenticated ones
+<% if @usershare_allow_guests -%>
+  usershare allow guests = yes
+<% else -%>
+  usershare allow guests = no
+<% end -%>

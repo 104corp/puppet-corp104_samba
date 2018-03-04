@@ -1,0 +1,68 @@
+
+########## Domains ###########
+
+#
+# The following settings only takes effect if 'server role = primary
+# classic domain controller', 'server role = backup domain controller'
+# or 'domain logons' is set
+#
+
+# It specifies the location of the user's
+# profile directory from the client point of view) The following
+# required a [profiles] share to be setup on the samba server (see
+# below)
+<% if @logon_path -%>
+  logon path = <%= @logon_path %>
+<% else -%>
+#  logon path = \\%N\profiles\%U
+<% end -%>
+
+# The following setting only takes effect if 'domain logons' is set
+# It specifies the location of a user's home directory (from the client
+# point of view)
+<% if @logon_drive -%>
+  logon drive = <%= @logon_drive %>
+<% else -%>
+#  logon drive = H:
+<% end -%>
+<% if @logon_home -%>
+  logon home = <%= @logon_home %>
+<% else -%>
+#  logon home = \\%N\%U
+<% end -%>
+
+# The following setting only takes effect if 'domain logons' is set
+# It specifies the script to run during logon. The script must be stored
+# in the [netlogon] share
+# NOTE: Must be store in 'DOS' file format convention
+<% if @logon_script -%>
+  logon script = <%= @logon_script %>
+<% else -%>
+#  logon script = logon.cmd
+<% end -%>
+
+# This allows Unix users to be created on the domain controller via the SAMR
+# RPC pipe.  The example command creates a user account with a disabled Unix
+# password; please adapt to your needs
+<% if @add_user_script -%>
+  add user script = <%= @add_user_script %>
+<% else -%>
+#  add user script = /usr/sbin/adduser --quiet --disabled-password --gecos "" %u
+<% end -%>
+
+# This allows machine accounts to be created on the domain controller via the
+# SAMR RPC pipe.
+# The following assumes a "machines" group exists on the system
+<% if @add_machine_script -%>
+  add machine script = <%= @add_machine_script %>
+<% else -%>
+#  add machine script  = /usr/sbin/useradd -g machines -c "%u machine account" -d /var/lib/samba -s /bin/false %u
+<% end -%>
+
+# This allows Unix groups to be created on the domain controller via the SAMR
+# RPC pipe.
+<% if @add_group_script -%>
+  add group script = <%= @add_group_script %>
+<% else -%>
+#  add group script = /usr/sbin/addgroup --force-badname %g
+<% end -%>
