@@ -12,7 +12,7 @@ define corp104_samba::share (
   Optional[Array] $hosts_allow = undef,
   Optional[Array] $hosts_deny = undef,
 ) {
-  concat::fragment { 'smb.conf-share':
+  concat::fragment { "${name}-samba-conf-share":
     target  => $corp104_samba::smb_config,
     order   => 90,
     content => template("${module_name}/config/smb_conf/share.erb"),
