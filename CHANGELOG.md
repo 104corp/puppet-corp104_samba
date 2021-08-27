@@ -1,3 +1,7 @@
+## 2019-11-12 - Release 1.0.4
+
+  - fix writeable for guest user  
+
 ## 2019-11-12 - Release 1.0.3
 
   - fix acceptance testing for travis ci
