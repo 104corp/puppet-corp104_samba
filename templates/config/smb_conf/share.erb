@@ -33,6 +33,9 @@
 <% if @valid_users -%>
   valid users = <%= @valid_users %>
 <% end -%>
+<% if @force_user -%>
+  force users = <%= @force_user %>
+<% end -%>
 <% if @hosts_allow.is_a? Array -%>
   hosts allow = <%= @hosts_allow.join(' ') %>
 <% end -%>

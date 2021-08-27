@@ -9,6 +9,7 @@ define corp104_samba::share (
   Optional[String] $directory_mask = undef,
   Boolean $read_only = false,
   Optional[String] $valid_users = undef,
+  Optional[String] $force_user = undef,
   Optional[Array] $hosts_allow = undef,
   Optional[Array] $hosts_deny = undef,
 ) {
