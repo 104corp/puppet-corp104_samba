@@ -1,3 +1,7 @@
+## 2025-06-02 - Release 2.0.0
+
+  - update dependencies to newer versions
+
 ## 2019-11-12 - Release 1.0.4
 
   - fix writeable for guest user  
